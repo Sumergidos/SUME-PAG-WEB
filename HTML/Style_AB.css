@@ -1,0 +1,745 @@
+/* ============================================================
+   SISTEMA DE VOTACIONES ELECTORALES 2026
+   Style_AB.css
+   ============================================================ */
+
+/* ---------- Reset & Variables ---------- */
+:root {
+  --azul:        #4782e2;
+  --azul-claro:  #4c7dd2;
+  --rojo:        #8b1a1a;
+  --rojo-claro:  #c0392b;
+  --verde:       #1a5c2e;
+  --verde-claro: #27ae60;
+  --dorado:      #d4a017;
+  --fondo:       #f0f2f5;
+  --fondo-card:  #ffffff;
+  --texto:       #1a1a2e;
+  --texto-suave: #555577;
+  --borde:       #dde1ea;
+  --sombra:      0 4px 20px rgba(0,0,0,0.10);
+  --sombra-hover:0 8px 32px rgba(0,0,0,0.18);
+  --radio:       14px;
+  --transicion:  0.3s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Contenedor ---------- */
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  background: linear-gradient(135deg, #3d69e1 0%, #3e76d1 50%, #3b61ca 100%);
+  color: #fff;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+.encabezado .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.escudo {
+  font-size: 2.4rem;
+  color: var(--dorado);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.titulo-principal {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.subtitulo {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.info-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.badge-oficial {
+  background: rgba(212, 160, 23, 0.2);
+  border: 1px solid var(--dorado);
+  color: var(--dorado);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  animation: pulso 2s infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.total-votos {
+  font-size: 0.84rem;
+  opacity: 0.85;
+}
+
+/* ---------- Hero / Instrucciones ---------- */
+.hero {
+  background: linear-gradient(180deg, #162d5e 0%, #1a3a6e 100%);
+  color: #fff;
+  padding: 56px 0 40px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  max-width: 540px;
+  margin: 0 auto 32px;
+  opacity: 0.85;
+  font-size: 1rem;
+}
+
+.pasos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.paso-num {
+  width: 40px;
+  height: 40px;
+  background: var(--dorado);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paso p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.paso-flecha {
+  font-size: 1.5rem;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+/* ---------- Alertas ---------- */
+.alerta {
+  border-radius: var(--radio);
+  padding: 14px 20px;
+  margin: 24px 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alerta-info {
+  background: #e8f0fe;
+  border-left: 4px solid var(--azul-claro);
+  color: var(--azul);
+}
+
+.alerta-exito {
+  background: #e6f4ea;
+  border-left: 4px solid var(--verde-claro);
+  color: var(--verde);
+}
+
+.hidden { display: none !important; }
+
+/* ---------- Grid de Candidatos ---------- */
+main.contenedor {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.grid-candidatos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Tarjeta de Candidato ---------- */
+.tarjeta-candidato {
+  background: var(--fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  border: 2px solid var(--borde);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+}
+
+.tarjeta-candidato:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-hover);
+}
+
+.tarjeta-candidato.seleccionada {
+  border-color: var(--dorado);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(212, 160, 23, 0.25);
+}
+
+.tarjeta-candidato.inhabilitada {
+  opacity: 0.55;
+  pointer-events: none;
+  filter: grayscale(0.3);
+}
+
+/* Ribbon de partido */
+.ribbon {
+  position: absolute;
+  top: 18px;
+  right: -28px;
+  padding: 4px 36px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  transform: rotate(35deg);
+  z-index: 2;
+}
+
+.ribbon-azul  { background: var(--azul-claro); }
+.ribbon-rojo  { background: var(--rojo-claro); }
+.ribbon-verde { background: var(--verde-claro); }
+.ribbon-naranja   { background: #e85c00; }
+.ribbon-rojo-oscuro { background: #7b0d0d; }
+
+/* Foto */
+.foto-candidato {
+  background: #e8eaf6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 0 16px;
+}
+
+.foto-candidato img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  background: #ddd;
+}
+
+/* Info */
+.info-candidato {
+  padding: 16px 20px 12px;
+  flex: 1;
+  text-align: center;
+}
+
+.info-candidato h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.partido {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.propuesta {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.propuestas-lista {
+  list-style: none;
+  text-align: left;
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.propuestas-lista li { color: #2d7a3a; font-weight: 500; }
+
+/* ---------- Rueda de porcentaje (SVG) ---------- */
+.rueda-contenedor {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 16px auto 8px;
+}
+
+.rueda-svg {
+  transform: rotate(-90deg); /* Empieza desde arriba */
+  display: block;
+}
+
+/* Pista de fondo */
+.rueda-fondo {
+  fill: none;
+  stroke: #e8eaf0;
+  stroke-width: 10;
+}
+
+/* Arco de progreso */
+.rueda-progreso {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+}
+
+/* Colores por candidato */
+.rueda-azul  { stroke: url(#grad-azul);  stroke: #2a5298; }
+.rueda-roja  { stroke: url(#grad-rojo);  stroke: #c0392b; }
+.rueda-verde { stroke: url(#grad-verde); stroke: #27ae60; }
+.rueda-naranja    { stroke: #e85c00; }
+.rueda-rojo-oscuro { stroke: #7b0d0d; }
+
+/* Texto centrado sobre la rueda */
+.rueda-texto {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.rueda-pct {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--texto);
+  line-height: 1;
+}
+
+.rueda-label {
+  font-size: 0.62rem;
+  color: var(--texto-suave);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Efecto glow al hacer hover en la tarjeta */
+.tarjeta-candidato:hover .rueda-azul  { filter: drop-shadow(0 0 6px rgba(42,82,152,0.5)); }
+.tarjeta-candidato:hover .rueda-roja  { filter: drop-shadow(0 0 6px rgba(192,57,43,0.5)); }
+.tarjeta-candidato:hover .rueda-verde { filter: drop-shadow(0 0 6px rgba(39,174,96,0.5)); }
+.tarjeta-candidato:hover .rueda-naranja    { filter: drop-shadow(0 0 6px rgba(232,92,0,0.55)); }
+.tarjeta-candidato:hover .rueda-rojo-oscuro { filter: drop-shadow(0 0 6px rgba(123,13,13,0.55)); }
+
+/* Variantes de botón por partido */
+.btn-naranja    { background: #e85c00 !important; }
+.btn-naranja:hover { background: #c94f00 !important; }
+.btn-rojo       { background: var(--rojo-claro) !important; }
+.btn-rojo:hover { background: var(--rojo) !important; }
+.btn-rojo-oscuro { background: #7b0d0d !important; }
+.btn-rojo-oscuro:hover { background: #5a0909 !important; }
+
+/* Pulso cuando recibe un voto nuevo */
+@keyframes ringPulso {
+  0%   { transform: rotate(-90deg) scale(1); }
+  50%  { transform: rotate(-90deg) scale(1.06); }
+  100% { transform: rotate(-90deg) scale(1); }
+}
+
+.rueda-svg.pulso { animation: ringPulso 0.5s ease; }
+
+/* Botón votar */
+.btn-votar {
+  margin: 0 16px 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--azul);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background var(--transicion), transform var(--transicion);
+}
+
+.btn-votar:hover    { background: var(--azul-claro); transform: scale(1.02); }
+.btn-votar:active   { transform: scale(0.98); }
+.btn-votar:disabled { background: #aaa; cursor: not-allowed; }
+
+/* Badge seleccionado */
+.seleccionado-badge {
+  background: var(--dorado);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ---------- Área confirmar ---------- */
+.area-confirmar {
+  margin: 24px 0;
+}
+
+.confirmacion-card {
+  background: #fff8e1;
+  border: 2px solid var(--dorado);
+  border-radius: var(--radio);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.confirm-texto { font-size: 1rem; font-weight: 500; }
+
+.botones-confirmar {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: opacity var(--transicion), transform var(--transicion);
+}
+
+.btn-cancelar {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.btn-confirmar {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: #fff;
+}
+
+.btn-cancelar:hover,
+.btn-confirmar:hover { opacity: 0.9; transform: scale(1.03); }
+
+/* ---------- Resultados ---------- */
+.resultados {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+  color: #fff;
+  padding: 64px 0;
+}
+
+.titulo-seccion {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.subtitulo-seccion {
+  opacity: 0.65;
+  margin-bottom: 40px;
+  font-size: 0.93rem;
+}
+
+.grid-resultados {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resultado-item {
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radio);
+  padding: 20px 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: background var(--transicion);
+}
+
+.resultado-item:hover {
+  background: rgba(255,255,255,0.10);
+}
+
+.resultado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resultado-nombre {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.resultado-porcentaje {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--dorado);
+}
+
+.barra-contenedor {
+  height: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.barra {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+.barra-azul  { background: linear-gradient(90deg, #2a5298, #5b8dee); }
+.barra-roja  { background: linear-gradient(90deg, #8b1a1a, #e74c3c); }
+.barra-verde { background: linear-gradient(90deg, #1a5c2e, #27ae60); }
+
+.resultado-votos {
+  font-size: 0.82rem;
+  opacity: 0.65;
+}
+
+/* Ganador */
+.ganador-area {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.ganador-card {
+  background: linear-gradient(135deg, rgba(212,160,23,0.2), rgba(212,160,23,0.05));
+  border: 2px solid var(--dorado);
+  border-radius: var(--radio);
+  padding: 28px 48px;
+  text-align: center;
+  animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.trofeo { font-size: 2.5rem; margin-bottom: 8px; }
+
+.ganador-label {
+  font-size: 0.82rem;
+  opacity: 0.65;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.ganador-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--dorado);
+}
+
+/* Botón admin */
+.admin-area {
+  margin-top: 32px;
+  text-align: right;
+}
+
+.btn-reiniciar {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.45);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all var(--transicion);
+}
+
+.btn-reiniciar:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.8);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 40px 48px;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-icono { font-size: 3rem; margin-bottom: 12px; }
+
+.modal h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.modal p {
+  color: var(--texto-suave);
+  margin-bottom: 8px;
+}
+
+.modal-candidato {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--texto) !important;
+}
+
+.modal-aviso {
+  font-size: 0.85rem !important;
+  color: #888 !important;
+  margin-bottom: 24px !important;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ---------- Pie ---------- */
+.pie {
+  background: #0a0a14;
+  color: rgba(255,255,255,0.45);
+  padding: 28px 0;
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.pie-sub { margin-top: 4px; font-size: 0.75rem; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .grid-candidatos {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .encabezado .contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-header { align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .titulo-principal { font-size: 1rem; }
+  .confirmacion-card { flex-direction: column; }
+}
+
